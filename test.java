@@ -7,24 +7,25 @@ public class test{
   }
 
   private static void f(int k, ArrayList<String> l, int maxL, String word) {
-    if (k == 0) l.add(word);
-    else {
+    if (k > 0) {
       for (int i = 0; i < maxL; i++) {
-        f(k-1, l, maxL, word + (char) (97 + i))
+        f(k-1, l, maxL, word + (char) (97 + i));
       }
+    }else {
+      l.add(word);
     }
   }
   public static void main(String[] args) {
-    System.out.println(makeAllWords(1,26));/*returns the list:
+    System.out.println(makeAllWords(1,26) + "\n\n\n");/*returns the list:
     ["a","b","c",..."z"]*/
 
-System.out.println(makeAllWords(2,26));/* returns the list:
+System.out.println(makeAllWords(2,26)+ "\n\n\n");/* returns the list:
     ["aa","ab","ac",..."az",
      "ba","bb","bc",..."bz",
      ...
      "za","zb","zc",..."zz"]
 */
-System.out.println(makeAllWords(3,3));/*returns the list:
+System.out.println(makeAllWords(3,3)+ "\n\n\n");/*returns the list:
     ["aaa","aab","aac",
      "aba","abb","abc",
      ...
