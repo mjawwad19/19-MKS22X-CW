@@ -54,8 +54,11 @@ public class partition{
   public static void main(String[] args) {
     int[] data = {8, 6, 7, 5, 3, 0, 9};
     System.out.println("Original " + Arrays.toString(data));
-    System.out.println(partition(data, 0, data.length -1));
-    //index should be at the front right now and 8 in index's place;
-    System.out.println("partitioned : " + Arrays.toString(data)); //with pivot in the right place;
-  }
+    int p1 = partition(data,0,data.length -1);
+    driver.checker(p1, data);
+    int[] d2 = {999,999,999,4,1,0,3,2,999,999,999};
+    System.out.println("Original " + Arrays.toString(data));
+    int p2 = partition(d2, 0, d2.length -1);
+    driver.checker(p2, d2);
+    }
 }
