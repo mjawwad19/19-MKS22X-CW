@@ -12,21 +12,38 @@ public class partition{
     int index = (int) (Math.random() * (end - start + 1) + start);
     // choose a random index that is not start nor end (or attempt not to, as discussed in class)
     int pivot = data[index];
+    System.out.println("pivot : " + pivot);
     //pivot is what we will use the separate the data that is less or greater. We temporarily store since swapping is involved for constant time!
-    data[index] = data[0];
-    data[0] = pivot;
-    System.out.println(Arrays.toString(data));
+    swapper(data, index, 0);
+    //System.out.println(Arrays.toString(data));
     start++; //we will not include pivot till later.
 
+    while (start != end) {
+      if (data[start] > pivot)  {
+        swapper(data, start, end);
+        end--;
+        //swap the data that's greater than pivot to the right of pivot but then also converge inwards from end
+      }
+      else start++; //do nothing otherwise because it's less than so right place currently
+      System.out.println(Arrays.toString(data));
+    }
     if (data[start] < pivot) {
       data[0] = data[start];
       data[start] = pivot;
     }
-    System.out.println(Arrays.toString(data));
+
+    //System.out.println(Arrays.toString(data));
+  }
+
+  private static void swapper(int[] data, int A, int B) {
+    int t = data[A];
+    data[A] = data[B];
+    data[B] = t;
   }
 
   public static void main(String[] args) {
     int[] data = {8, 6, 7, 5, 3, 0, 9};
+    System.out.println("Original " + Arrays.toString(data));
     partition(data, 0, data.length -1);
     System.out.println(Arrays.toString(data));
     //index should be at the front right now and 8 in index's place;
