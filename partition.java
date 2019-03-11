@@ -8,7 +8,7 @@ public class partition{
    *4. all elements in range that are larger than the pivot element are placed after the pivot element.
    *@return the index of the final position of the pivot element.
    */
-  public static void partition ( int [] data, int start, int end){
+  public static int partition ( int [] data, int start, int end){
     int index = (int) (Math.random() * (end - start + 1) + start);
     // choose a random index that is not start nor end (or attempt not to, as discussed in class)
     int pivot = data[index];
@@ -28,8 +28,18 @@ public class partition{
       System.out.println(Arrays.toString(data));
     }
     if (data[start] < pivot) {
-      data[0] = data[start];
-      data[start] = pivot;
+      swapper(data, 0, start);
+      //now start is the index of pivot
+      System.out.println(Arrays.toString(data));
+      //this should show that if this was a sorted array, pivot is in the right place!
+      return start;
+    }
+    else {
+      swapper(data, start -1, 0);
+      //pivot and start-1 need to swap
+      System.out.println("pivot : " + pivot);
+      System.out.println(Arrays.toString(data));
+      return start -1;
     }
 
     //System.out.println(Arrays.toString(data));
@@ -44,8 +54,7 @@ public class partition{
   public static void main(String[] args) {
     int[] data = {8, 6, 7, 5, 3, 0, 9};
     System.out.println("Original " + Arrays.toString(data));
-    partition(data, 0, data.length -1);
-    System.out.println(Arrays.toString(data));
+    System.out.println(partition(data, 0, data.length -1));
     //index should be at the front right now and 8 in index's place;
   }
 }
