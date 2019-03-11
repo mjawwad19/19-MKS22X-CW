@@ -15,12 +15,20 @@ public class partition{
     //pivot is what we will use the separate the data that is less or greater. We temporarily store since swapping is involved for constant time!
     data[index] = data[0];
     data[0] = pivot;
+    System.out.println(Arrays.toString(data));
+    start++; //we will not include pivot till later.
+
+    if (data[start] < pivot) {
+      data[0] = data[start];
+      data[start] = pivot;
+    }
+    System.out.println(Arrays.toString(data));
   }
 
   public static void main(String[] args) {
     int[] data = {8, 6, 7, 5, 3, 0, 9};
     partition(data, 0, data.length -1);
     System.out.println(Arrays.toString(data));
-    //7 should be at the front right now and 8 in 7's place;
+    //index should be at the front right now and 8 in index's place;
   }
 }
