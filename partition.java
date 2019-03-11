@@ -25,20 +25,20 @@ public class partition{
         //swap the data that's greater than pivot to the right of pivot but then also converge inwards from end
       }
       else start++; //do nothing otherwise because it's less than so right place currently
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
     }
     if (data[start] < pivot) {
       swapper(data, 0, start);
       //now start is the index of pivot
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       //this should show that if this was a sorted array, pivot is in the right place!
       return start;
     }
     else {
       swapper(data, start -1, 0);
       //pivot and start-1 need to swap
-      System.out.println("pivot : " + pivot);
-      System.out.println(Arrays.toString(data));
+      //System.out.println("pivot : " + pivot);
+      //System.out.println(Arrays.toString(data));
       return start -1;
     }
 
@@ -56,5 +56,6 @@ public class partition{
     System.out.println("Original " + Arrays.toString(data));
     System.out.println(partition(data, 0, data.length -1));
     //index should be at the front right now and 8 in index's place;
+    System.out.println("partitioned : " + Arrays.toString(data)); //with pivot in the right place;
   }
 }
